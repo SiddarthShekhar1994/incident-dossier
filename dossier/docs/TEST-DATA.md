@@ -88,6 +88,7 @@ Page 3, Duties after a loss:
 **TIMELINE.md, key lines**
 
 ```text
+Cameras searched: all cameras
 Camera branch: found 4 events
 Photo branch: found 3 photos
 Possibly incomplete: not cut off at the result limit. This does not show that every event was detected
@@ -102,7 +103,7 @@ Entries appear in this order:
 
 | # | Time | Source | Identity or label |
 |---|---|---|---|
-| 1 | 14:51:20 | evt_test_001 | known person |
+| 1 | 14:51:20 | evt_test_001 | known person, not confirmed |
 | 2 | 14:52:00 | IMG_TEST_0101.jpg | inside window |
 | 3 | 15:04:10 | evt_test_002 | unknown vehicle. no plate data returned. Plate recognition may be off or unavailable on this NAS |
 | 4 | 15:06:40 | evt_test_003 | identity not checked: no row for this event. no plate data returned. Plate recognition may be off or unavailable on this NAS |
@@ -154,7 +155,7 @@ Variant: Surveillance Center is not installed and both calls fail. Use M-02c and
 | E2 | Running clock differs (photo 0102) | Note fires. A printed receipt time would not fire | No |
 | E3 | Stranger with a near match (Case A, event 004) | "unknown person", with no name anywhere | Yes, paper otherwise |
 | E4 | Missing plate (Case A, events 002 and 003) | Plate text from DESIGN section 7. D2.2 not sent. No claim about image quality | Yes, paper otherwise |
-| E5 | Plate id returned for event 003 (`plate_test_01`, plate `TEST-000`, marked stranger) | D2.2 sent once, for that id only. Event 003 reads "unknown vehicle". Names included: plate shown as from the NAS, not confirmed. Withheld: "plate returned, withheld at your request", and item d stays Partial | Yes, paper otherwise |
+| E5 | Plate id returned for event 003 (`plate_test_01`, plate `TEST-000`, marked stranger) | D2.2 sent once, for that id only. Event 003 reads "unknown vehicle". Names included: plate shown as from the NAS, not confirmed. Withheld: "plate returned, withheld", and item d stays Partial | Yes, paper otherwise |
 | E6 | Evidence returns a real path | D3.2 confirms the file, it joins the plan as a copy, and the prompt count rises by 1 | Yes, paper otherwise |
 | E7 | Extra outside-window photo `IMG_TEST_0104.jpg`, 2026:11:01 10:00, a birthday cake | Listed by name and time only. No vision call. Not copied unless added | No |
 | E8 | Photo with no EXIF | Listed as undated at Stop B. Left out of the order check. Can still be copied | No |
@@ -197,6 +198,25 @@ Variant: Surveillance Center is not installed and both calls fail. Use M-02c and
 | E45 | A hash call fails on a copy | M-18c. Copy stays, marked not verified. It does not count toward Have. Partial | No |
 | E46 | Pet incident, no cameras, no photos, no document | M-14b. Nothing written. A path in reply runs the matching reads, then M-20 | No |
 | E47 | A save completes without verified true, or at another path | M-19b. Text shown in chat. Partial | No |
+| E48 | A bare "yes" at Stop B | Builds. Names and plates stay withheld | Yes, paper otherwise |
+| E49 | A "yes" about names or plates, with no word on building | M-26. Nothing is built until the user says build | Yes, paper otherwise |
+| E50 | `ls` on the root fails | M-30 at Stop B, with no build question. A plain yes gets M-30 again | No |
+| E51 | D7.1 reports the folder already exists | M-16. Nothing written into the earlier folder | No |
+| E52 | A kept event returns a real file path | One further stop shows the new file before any copy. Prompts rise by 1 | Yes, paper otherwise |
+| E53 | User names a folder at Stop B | It replaces the default name. D5.2 runs again. A partial path gets M-01b | No |
+| E54 | Events returned with no limit echoed, a total above the count, or a warning | M-05c. Possibly incomplete | Yes, paper otherwise |
+| E55 | 2.1 asks "Is this Alex Testperson?" | Not shown and not answered. The event reads identity not checked | Yes, paper otherwise |
+| E56 | 1.2 asks whether to search another date, and the user says yes | The confirmed window does not change. Marked not checked | Yes, paper otherwise |
+| E57 | The expert reports the same window in UTC | Treated as the same window. No resend | Yes, paper otherwise |
+| E58 | The expert reports a different window twice | M-04, reason that it used other values | Yes, paper otherwise |
+| E59 | Retry without topics fails | M-03d | Yes, paper otherwise |
+| E60 | Only held events, and the reply is "yes" with no keep | M-31. Keep runs steps 2 and 3. Anything else sends M-22 | Yes, paper otherwise |
+| E61 | Single file named at Stop B, and a path named at the further stop | M-27, then M-28 | No |
+| E62 | Two planned files share a name | M-29 in the plan. Only the first is copied | No, a test clip is enough |
+| E63 | Archive list stops at the limit | M-08c. Possibly incomplete | No, a test clip is enough |
+| E64 | Reply names a file to leave out | Dropped from the copy list. Prompt count falls | No, a test clip is enough |
+| E65 | Overnight window, 23:00 to 06:00 | M-01 shows the end date. The window is not rejected as end before start | Yes, paper otherwise |
+| E66 | Reply is "stop" at M-01 | M-00b. Nothing read about the incident | No |
 
 ## 7. First things to test on an assigned NAS
 
@@ -223,3 +243,14 @@ Written as planned tests on the Finalist NAS, using the same three cases your br
 - Edge: timestamp disagreement. Camera order if a camera source exists, otherwise the running clock (E2).
 
 The answer must state the camera dependency, and that test files must be placed on the NAS first.
+
+## 9. What the Phase 2 package does with these cases
+
+The Phase 2 package has no photo or claim document steps, so it walks only the camera parts on paper.
+
+| Case | Expected from the Phase 2 package |
+|---|---|
+| Case A | Same read-back and same 4 events and labels. M-07 for event 004. Stop B has 8 items, with M-06 for events 001, 002 and 003. With no evidence files, the plan is 1 folder and 2 saves, so 3 approvals. TIMELINE.md holds 4 camera entries, with "Photo branch: not read in this run" and "Order check not run: no photos were read". CLAIM-CHECKLIST.md holds gathered items only. Final message: Built |
+| Case B | M-02, then M-14b. No folder. Not built, unless the user gives an archive folder in reply |
+| Case B variant | M-02c, then M-04, then M-14b. The word "empty" does not appear |
+| Photo and document edge cases | Not reachable until Phase 3: E2, E7, E8, E12 to E14, and the photo parts of E10, E15 to E17, E27 to E31, E34, E38, E42, E43 and E46 |

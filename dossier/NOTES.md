@@ -15,7 +15,7 @@ Everything read on 2026-11-06. Devpost blocks the fetch tool, so its pages were 
 | Exit code 0 does not mean clean. Several other checker traps | Packet's `NOTES.md` table, lines 11 to 25, proven on 0.7.3. A throwaway package with the design's fixed wording gave `static-pass` with 0 warnings | Stop only at `static-pass` with 0 warnings. Follow that table. Retest on 0.7.6 |
 | The checker never validates action parameters | From the catalog, `check-lib.mjs` reads only the version, CLI names and agents. It checks delegate lines, evidence lines, references, security patterns and format, never an action name or parameter | The brief's "drop update mode if it adds warnings" test would not catch its real problem. Parameters are checked against the catalog by hand |
 | The kit has no feasibility tool | Its reference files only say to consult the catalog | Answered from the catalog and references, with independent reviewers |
-| `save-text` append | No append parameter. `echo` has a `write-mode`, with different approval and no verified field | Update mode dropped, pending your call |
+| `save-text` append | No append parameter. `echo` has a `write-mode`, with different approval and no verified field | Update mode dropped, as agreed with your Phase 2 go |
 | UGREEN says Skills can call other Skills. The kit allows only `delegate`, and the checker has no rule either way | Technical FAQ Q3. Kit `SKILL.md` line 29. A reviewer's throwaway package with such a line still gave `static-pass` with 0 warnings | Use `delegate` only |
 
 ## Rules and sources
@@ -38,6 +38,16 @@ Everything read on 2026-11-06. Devpost blocks the fetch tool, so its pages were 
 | Starter Kit recommends a README, but the checker and Rules do not allow one | Packet `NOTES.md` line 13 | Use `references/setup-and-testing.md` |
 | Testing dates differ: Rules say Nov 22 to 28, the Community FAQ says Nov 22 to 30 | [Start Here FAQ](https://community.ugreen.com/nas/pagesD/circle/post?id=1581) says the Rules prevail | Plan for Nov 22 to 28 |
 | Devpost forum threads have 0 replies. UGREEN answers in its Community | Forum read today | Treat Technical FAQ answers as UGREEN's stated behavior, not NAS results |
+
+## Phase 2
+
+- **The package is camera-only for now.** It says so plainly in its description and Goal, and promises no photos or claim documents. Step numbers skip on purpose, so they stay stable when steps 4, 5 and 6 arrive. DESIGN section 13 lists exactly what Phase 3 restores.
+- **The kit's "Skill is complete" upload line is withheld.** The kit says not to show it for a partly finished Skill.
+- **The brief's section names fail the checker,** so the package uses `# Generation-time capability evidence`, `# Orchestration` and the backticked arrow form. It also adds `references/messages.md`, beyond the two references the brief names, to keep SKILL.md readable.
+- **Kit version.** Built and checked on 0.7.3. On Nov 6 the Starter Kit still links 0.7.3 and the installed copy still has 26 files. Retest when 0.7.6 is here.
+- **Local lint.** `dossier/tools/lint-package.mjs` checks what the checker cannot see: apostrophes inside instructions, undefined run values, unused messages, line endings, BOMs and links. Run it with the package path and `dossier/docs/DESIGN.md`. It is not part of the ZIP.
+- **Review.** One independent reviewer walked the package and found 29 defects, all accepted, including a bare yes writing names and plates into files and nothing stopping a write into an existing folder. The fixes were then checked with the checker, the lint and a comparison against the reviewer's trial copy. They did not get a second independent review.
+- **Size to watch.** SKILL.md is about 4,450 words, and Phase 3 adds steps 4, 5 and 6. The stranger read in Phase 3 should look for what can move to references. Decision rules stay in SKILL.md until a NAS shows that references are read at runtime.
 
 ## To carry into later phases
 
