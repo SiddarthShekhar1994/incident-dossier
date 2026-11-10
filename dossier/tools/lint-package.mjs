@@ -44,7 +44,8 @@ if ([...desc].length > 1024) note("description over 1024");
 console.log(`SKILL.md lines ${skill.split(/\r?\n/).length}, words ${skill.split(/\s+/).length}`);
 
 // 3. Delegate lines: the checker stops at the first apostrophe, so test the whole line
-const definedSlots = new Set([...skill.split("# Generation-time capability evidence")[0].matchAll(/`\{([a-z_]+)\}`/g)].map((m) => m[1]));
+const runValues = readFileSync(path.join(pkg, "references", "run-values.md"), "utf8");
+const definedSlots = new Set([...runValues.matchAll(/`\{([a-z_]+)\}`/g)].map((m) => m[1]));
 const delegates = skill.split(/\r?\n/).map((l, i) => [l, i + 1]).filter(([l]) => l.includes("delegate --"));
 const targets = {};
 for (const [line, n] of delegates) {
@@ -55,7 +56,7 @@ for (const [line, n] of delegates) {
   if (text.includes("'")) note(`line ${n}: apostrophe inside the instruction`);
   if (/;/.test(text)) note(`line ${n}: semicolon inside the instruction`);
   for (const s of text.matchAll(/\{([a-z_]+)\}/g)) {
-    if (!definedSlots.has(s[1])) note(`line ${n}: run value {${s[1]}} is not defined under Required input`);
+    if (!definedSlots.has(s[1])) note(`line ${n}: run value {${s[1]}} is not defined in run-values.md`);
   }
   if (/\bthat (folder|file|path|document)\b|\bfrom before\b|\bprevious step\b|\bthe same (folder|file)\b|\bthose (events?|files?)\b(?! for)/i.test(text)) note(`line ${n}: vague reference in instruction`);
 }
@@ -68,9 +69,8 @@ const usedInSteps = new Set([...steps.matchAll(/\{([a-z_]+)\}/g)].map((m) => m[1
 for (const s of usedInSteps) {
   if (!definedSlots.has(s)) note(`step text uses {${s}} which is not defined`);
 }
-const usedAnywhere = new Set([...body.replace(/^\| `\{.*$/gm, "").matchAll(/\{([a-z_]+)\}/g)].map((m) => m[1]));
 for (const s of definedSlots) {
-  if (!usedInSteps.has(s) && !usedAnywhere.has(s)) note(`run value {${s}} is defined but never used`);
+  if (!usedInSteps.has(s)) note(`run value {${s}} is defined but never used`);
 }
 
 // 5. Message IDs both ways
@@ -78,7 +78,9 @@ const defined = new Set([
   ...[...messages.matchAll(new RegExp(`^\\| (${ID}) \\|`, "gm"))].map((m) => m[1]),
   ...[...messages.matchAll(new RegExp(`\\*\\*(${ID}),`, "g"))].map((m) => m[1]),
 ]);
-const referenced = new Set([...body.matchAll(new RegExp(`\\b${ID}\\b`, "g"))].map((m) => m[0]));
+// The Stop B replies moved to a reference, so messages sent from there count as sent.
+const replies = readFileSync(path.join(pkg, "references", "stop-b-replies.md"), "utf8");
+const referenced = new Set([...(body + replies).matchAll(new RegExp(`\\b${ID}\\b`, "g"))].map((m) => m[0]));
 for (const m of referenced) if (!defined.has(m)) note(`SKILL.md references undefined ${m}`);
 for (const m of defined) if (!referenced.has(m)) note(`${m} is defined but SKILL.md never sends it`);
 console.log(`messages defined ${defined.size}, referenced ${referenced.size}`);

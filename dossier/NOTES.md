@@ -17,6 +17,7 @@ Everything read on 2026-11-06. Devpost blocks the fetch tool, so its pages were 
 | The kit has no feasibility tool | Its reference files only say to consult the catalog | Answered from the catalog and references, with independent reviewers |
 | `save-text` append | No append parameter. `echo` has a `write-mode`, with different approval and no verified field | Update mode dropped, as agreed with your Phase 2 go |
 | UGREEN says Skills can call other Skills. The kit allows only `delegate`, and the checker has no rule either way | Technical FAQ Q3. Kit `SKILL.md` line 29. A reviewer's throwaway package with such a line still gave `static-pass` with 0 warnings | Use `delegate` only |
+| The brief says to ask the kit "What could be made clearer?". The kit has no such question or tool | The phrase is in none of its Markdown files. Its reference files give a short list instead: index-like descriptions, no guessed values, fixed scopes, defined empty results, write effects, approval boundaries and recovery from partial work | Applied that list by hand, along with the stranger read. See Phase 3 |
 
 ## Rules and sources
 
@@ -45,19 +46,27 @@ Everything read on 2026-11-06. Devpost blocks the fetch tool, so its pages were 
 - **The kit's "Skill is complete" upload line is withheld.** The kit says not to show it for a partly finished Skill.
 - **The brief's section names fail the checker,** so the package uses `# Generation-time capability evidence`, `# Orchestration` and the backticked arrow form. It also adds `references/messages.md`, beyond the two references the brief names, to keep SKILL.md readable.
 - **Kit version.** Built and checked on 0.7.3. On Nov 6 the Starter Kit still links 0.7.3 and the installed copy still has 26 files. Retest when 0.7.6 is here.
-- **Local lint.** `dossier/tools/lint-package.mjs` checks what the checker cannot see: apostrophes inside instructions, undefined run values, unused messages, line endings, BOMs and links. Run it with the package path and `dossier/docs/DESIGN.md`. It is not part of the ZIP.
+- **Local lint.** `dossier/tools/lint-package.mjs` checks what the checker cannot see: apostrophes inside instructions, undefined run values, unused messages, line endings, BOMs and links. Run it with the package path. It is not part of the ZIP.
 - **Review.** One independent reviewer walked the package and found 29 defects, all accepted, including a bare yes writing names and plates into files and nothing stopping a write into an existing folder. The fixes were then checked with the checker, the lint and a comparison against the reviewer's trial copy. They did not get a second independent review.
-- **Size to watch.** SKILL.md is about 4,450 words, and Phase 3 adds steps 4, 5 and 6. The stranger read in Phase 3 should look for what can move to references. Decision rules stay in SKILL.md until a NAS shows that references are read at runtime.
+- **Size to watch.** SKILL.md was about 4,450 words at the end of Phase 2. Phase 3 picks this up.
+
+## Phase 3
+
+- **Steps 4, 5 and 6 are in,** with the five fallback checklists, gap rules, disclosures, and setup and testing notes. Every write is preceded by a message saying what is being approved and what a cancel does.
+- **Dry run.** `docs/DRY-RUN.md` walks Case A, Case B, the Case B variant and cancelled writes, then the delegations Case A does not reach. `dossier/tools/check-dry-run.mjs` checks every delegation against a form in SKILL.md and every shown message against `messages.md`, and it confirms all 19 forms are walked. It is not part of the ZIP. The walk changed the Skill in three places, listed at the end of the dry run.
+- **The 25-item check split in two.** The design read photos first so one prompt could count events and photos. M-05b now covers events before steps 2 and 3, and M-05d covers photos before D4.3, so the Skill reads top to bottom in run order.
+- **Clarity pass.** Kit guidance and the stranger read agreed on the same gaps. Added a run map, a Not for line, plain cancel outcomes and a recovery line. If the messages or identity rules cannot be read, the run now ends as Not built, because the notice and the stranger rule would otherwise be lost.
+- **Decision rules moved to references, which reverses the Phase 2 note.** Gap rules, run values and Stop B replies now live in references, to keep the main flow readable. The Skill therefore depends on references being read at runtime, which is test item 7 in TEST-DATA section 7. If a NAS shows they are not read, this has to move back.
+- **Size.** SKILL.md is about 5,950 words. The checker reads delegate lines from SKILL.md only, so all 19 lines and their step rules have to stay there. A stranger read proposed cuts, and those that lose nothing were taken. It also proposed moving the step 1 result table to `messages.md`. I kept it in SKILL.md, because it is the rule the brief asks a stranger to find: what happens when a camera returns nothing.
+- **Independent review, round 1.** One reviewer walked the package and all edge cases, and found 25 defects, all accepted. Three were high: a failure reason could carry a near-match name, an expert question holding a name was filtered only on step 2, and a yes to only plates also included names.
+- **Verification, round 2.** A workflow ran four lenses (privacy, control flow, writes and file truth, values and parity), each adversarially checked, plus a stranger read. 45 findings were confirmed and 15 refuted, with overlaps across lenses. All 45 were fixed as one set. High ones: a name read from a photo reached a file once names were included, an expert's "who is this?" could turn a user's answer into an identity, a bare path could become the save root, a window spanning a clock change searched the wrong hour, a left-out damage photo left "None found" standing as if checked, and a still image counted as Have for a video item.
+- **Regression, round 3.** Three finders and one adversarial verifier, aimed at the fixes. 16 confirmed, 12 refuted or duplicates, and none high. All 16 were fixed. Examples: a plate in the user's description could reach the checklist while the timeline withheld it, a stop during an open NAS prompt said "you cancelled" although the prompt could still fire, and a first run created `_dossiers` without saying so. High findings by round: 3, then about 6, then 0, so the rounds are converging on rarer branches. A narrow check of those fixes then found 10 small edge cases, all fixed, including a note that would have been shown to the user. Those last 10 fixes had the checker, the lint and the dry run check only, and no further review.
+- **Design doc.** Its copies of the rules, formats, messages and states drifted at every pass, so they now point to the package.
+- **Disclosure wording needs your confirmation.** `references/disclosures.md` names Claude Code with Claude Opus 5.5 as the only AI tools, and says the entrant wrote the idea and the original workflow in the project brief, and decided which changes to accept. The brief's planned sentence would not hold, because Claude drafted and reworked the workflow in reviews, and drafts the proposal answers. Only you can confirm your part, and that no other AI tool was used. Recheck on Nov 14.
+- **Kit's "Skill is complete" upload line is still withheld.** Round 1 takes a ZIP through Devpost, the disclosure wording is unconfirmed, and uploading to SkillHub is your call.
+- **Install route.** `setup-and-testing.md` says to follow UGREEN's Finalist instructions. No source I found says how an unlisted Skill is installed. SkillHub's publish page points to official Uliya release notes, which I could not locate, and its token route is for listed Skills.
 
 ## To carry into later phases
-
-**Phase 2 and 3**
-
-- Add `references/setup-and-testing.md`: prerequisites (Surveillance Center, Model Manager authorization, per-camera detection, face authorization, Smart Commands, photos on the NAS), what each missing one looks like, what a tester must place, removal, kit and catalog versions, and the owner undertakings. Install: follow UGREEN's Finalist instructions. No source I found says how an unlisted Skill is installed. SkillHub's publish page points to official Uliya release notes, which I could not locate. SkillHub's token route is for listed Skills.
-- Setup docs: Intelligent Learning may index saved files ([Model Manager notice](https://ai.ugreen.com/pages/notice-on-model-manager) 1.2). Not tested on a NAS. The notice lists exclusion paths under Universal Search (5.1(4)) and does not say whether they also stop Intelligent Learning.
-- Disclosure wording. The brief's planned sentence will not hold: Claude drafted and reworked the workflow in reviews, and drafts the proposal answers. Name the model. Use "the entrant" in the package. Only you can confirm you wrote the idea. Recheck on Nov 14.
-- `claim-checklists.md`: landlord and police lists are general and location-dependent.
-- Description: one short clause on what is read and that it writes one chosen folder. The kit wants it index-like, and SkillHub 4.3 wants permissions disclosed.
 
 **Phase 4**
 
@@ -70,7 +79,7 @@ Everything read on 2026-11-06. Devpost blocks the fetch tool, so its pages were 
 
 ## Open items for review
 
-- Reviewer detail, including 22 tested delegation forms, is in the local Claude Code workflow journal for run `wf_ff99bed5-766`. Use it as the starting wording for Phase 2.
+- Reviewer detail from Phase 1, including 22 tested delegation forms, is in the local Claude Code workflow journal for run `wf_ff99bed5-766`.
 - Synthetic test files are not built. This is tracked separately: invitations arrive Nov 21.
 
 ## Questions worth sending UGREEN
@@ -92,3 +101,4 @@ Not sent. Sending is your call. Routes: nas-support@ugreen.com, a support ticket
 - `py` reports Python 3.14.0, not 3.13 as the brief says. Node is v26.8.2.
 - PowerShell 5.1 traps from Packet still apply: `Set-Content -Encoding utf8` adds a BOM, and `Compress-Archive` writes backslashes. Write package files with the file tools and build the ZIP with Python `zipfile`.
 - The project is in OneDrive. List hidden files before checking or zipping.
+- To move to another machine, follow [docs/MACHINE-SETUP.md](docs/MACHINE-SETUP.md).
