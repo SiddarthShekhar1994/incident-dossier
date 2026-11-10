@@ -101,3 +101,4 @@ Not sent. Sending is your call. Routes: nas-support@ugreen.com, a support ticket
 - `py` reports Python 3.14.0, not 3.13 as the brief says. Node is v26.8.2.
 - PowerShell 5.1 traps from Packet still apply: `Set-Content -Encoding utf8` adds a BOM, and `Compress-Archive` writes backslashes. Write package files with the file tools and build the ZIP with Python `zipfile`.
 - The project is in OneDrive. List hidden files before checking or zipping.
+- To move to another machine, follow [docs/MACHINE-SETUP.md](docs/MACHINE-SETUP.md).
