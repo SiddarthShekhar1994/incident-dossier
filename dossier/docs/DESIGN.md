@@ -194,6 +194,6 @@ Changes made while writing it out in full:
 | Video hits get no vision call | No step views footage, so a labelled call would undercut that claim |
 | Reads started from a Stop B reply return to reply handling | A refusal there no longer reruns step 5 or marks earlier photos not checked |
 | A stop while a NAS prompt is open says the prompt may still fire | Saying "you cancelled" would be false, and a later Allow would write after the run ended |
-| The kit's "Skill is complete" upload line is still withheld | Round 1 takes a ZIP through Devpost, and the disclosure wording is not confirmed yet |
+| The kit's "Skill is complete" upload line is still withheld | Round 1 takes a ZIP through Devpost, and uploading to SkillHub is your call. The disclosure wording was confirmed on 2026-11-10 |
 
 The paper walk is in [DRY-RUN.md](DRY-RUN.md), and `dossier/tools/check-dry-run.mjs` keeps it matched to the package.

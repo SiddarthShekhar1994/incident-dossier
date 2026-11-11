@@ -10,7 +10,7 @@ Read on 2026-11-10 in the built-in browser: the Devpost Overview, [Official Rule
 
 | Item | Where it stands |
 |---|---|
-| AI tools wording in `references/disclosures.md` | Names Claude Code with Claude Opus 5.5 as the only AI tool, and says you wrote the idea and the original workflow and decided which changes to accept. Confirm both parts, and that no other AI tool or model was used anywhere, including for the idea, images or spelling. If Claude also builds the PDF, add that use. A change means rebuilding the ZIP (section 5) |
+| AI tools wording in `references/disclosures.md` | Confirmed by you on 2026-11-10 as accurate as written: Claude Code with Claude Opus 5.5 is the only AI tool, and you wrote the idea and the original workflow and decided which changes to accept. If anything else uses AI before you submit, such as Claude building the PDF, add that use and rebuild the ZIP (section 5) |
 | Track | DESIGN decision 7 recommends Open Innovation. Your brief says Automate Your Workflow. All prizes are open to every track (Resources FAQ) |
 | Your rewrite of the ten answers | The FAQ advises writing the PDF answers and the text description yourself. `PROPOSAL.md` has the facts to start from |
 | Questions to UGREEN | Drafted in `dossier/NOTES.md`, not sent. On Nov 10 another participant asked the 0.7.6 question in the Technical FAQ comments, with no reply yet |
