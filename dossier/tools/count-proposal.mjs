@@ -19,13 +19,19 @@ const note = (s) => problems.push(s);
 const answers = [];
 let current = null;
 let fence = false;
+let seenTen = false;
 for (const line of readFileSync(file, "utf8").split(/\r?\n/)) {
   if (/^\s*(```|~~~)/.test(line)) fence = !fence;
   const heading = !fence && line.match(/^(#{1,6})\s+(.*)$/);
   if (heading) {
     const num = heading[1].length === 2 && heading[2].match(/^(\d+)\.\s/);
+    // Any other heading ends the count, so one inside or between the answers would hide words.
+    if (!num && ((current && heading[1].length > 2) || (answers.length && !seenTen))) {
+      note(`heading inside the answers, so the text under it is not counted: ${heading[2]}`);
+    }
     current = num ? { n: Number(num[1]), lines: [] } : null;
     if (current) answers.push(current);
+    if (current && current.n === 10) seenTen = true;
     continue;
   }
   if (current) current.lines.push(line);
