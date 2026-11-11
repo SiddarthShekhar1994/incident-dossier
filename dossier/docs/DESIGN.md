@@ -14,7 +14,7 @@ Written 2026-11-06 against kit 0.7.3 (catalog 2.0.0) and UGREEN's Technical FAQ 
 | 4 | Names and plate numbers in saved files | **Decided 2026-11-06 with your Phase 2 go:** ask at Stop B with no preselected answer. A bare yes to build does not include them. Until answered, write the withheld labels from section 7 | SkillHub 7.1 strictly prohibits others' personal information in generated content, and whether that reaches an owner's own file is unclear. A claim may need a plate |
 | 5 | Search photos beyond the incident window | **Decided 2026-11-06 with your Phase 2 go:** yes | People photograph damage after the event. A 30-minute search misses those photos |
 | 6 | Update mode | **Decided 2026-11-06 with your Phase 2 go:** dropped. A rerun builds a new `_r2` folder | `save-text` has no append option. `echo` can append, but lists no verified result to check |
-| 7 | Track | Open Innovation | Your brief says Automate Your Workflow, which is framed around repetitive work. Stakes are low: all prizes are open to every track |
+| 7 | Track | **Decided 2026-11-10: Open Innovation** | Your brief says Automate Your Workflow, which is framed around repetitive work. Stakes are low: all prizes are open to every track |
 
 ## 2. Feasibility result
 

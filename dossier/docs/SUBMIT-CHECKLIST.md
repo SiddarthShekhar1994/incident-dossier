@@ -11,7 +11,7 @@ Read on 2026-11-10 in the built-in browser: the Devpost Overview, [Official Rule
 | Item | Where it stands |
 |---|---|
 | AI tools wording in `references/disclosures.md` | Confirmed by you on 2026-11-10 as accurate as written: Claude Code with Claude Opus 5.5 is the only AI tool, and you wrote the idea and the original workflow and decided which changes to accept. If anything else uses AI before you submit, such as Claude building the PDF, add that use and rebuild the ZIP (section 5) |
-| Track | DESIGN decision 7 recommends Open Innovation. Your brief says Automate Your Workflow. All prizes are open to every track (Resources FAQ) |
+| Track | Decided by you on 2026-11-10: Open Innovation (DESIGN decision 7). All prizes are open to every track (Resources FAQ) |
 | Your rewrite of the ten answers | The FAQ advises writing the PDF answers and the text description yourself. `PROPOSAL.md` has the facts to start from |
 | Questions to UGREEN | Drafted in `dossier/NOTES.md`, not sent. On Nov 10 another participant asked the 0.7.6 question in the Technical FAQ comments, with no reply yet |
 | Commit the ZIP to the public repo | Built at `dossier/dist/incident-dossier.zip`, not committed |
@@ -40,7 +40,7 @@ Read on 2026-11-10 in the built-in browser: the Devpost Overview, [Official Rule
 | Try it out links | Not seen. The Rules say Round 1 needs no repository link | Leave empty unless you want judges to see the public repo | The repo also holds the parked Packet entry, which could read as a second Project |
 | Video demo | Not seen. The Rules and UGREEN's hackathon page both say Round 1 needs no video | Leave empty | |
 | Thumbnail or image gallery | Not seen | Optional. Only images you made, with no real footage, photos or personal data | An image made with AI goes in the disclosures |
-| Track or category | Not seen | Your choice from section 1 | |
+| Track or category | Not seen | Open Innovation | The form shows Open Innovation before you submit |
 | Questions only this hackathon asks | Not seen | Answer each as asked. A team consent declaration or electronic signature is outside the word count | Nothing personal beyond what is asked |
 | Team members | Not seen | You alone if you enter as an individual. A team names one Representative to submit (Rules section 3) | Member names are outside the word count |
 | Agreement to the Official Rules and Devpost Terms | Not seen. Devpost usually has a checkbox | Read both, then tick it yourself | Submitting is agreement to the Rules (the line above Rules section 1) |
@@ -149,7 +149,7 @@ From DESIGN section 3 and SkillHub Standards 2.2 and 2.4. Check the PDF, the tag
 2. Sign in to the Devpost account you registered with.
 3. Attach the final PDF and the rebuilt ZIP. Compare the ZIP's SHA-256, from the command in section 5, with the build output.
 4. Confirm the disclosure wording inside the ZIP is the version you approved.
-5. Set the track.
+5. Set the track to Open Innovation.
 6. Read every text field once more against section 7.
 7. Confirm no personal data beyond your name is in the PDF, the ZIP or the text fields.
 8. Tick the agreement, press Submit, then reopen the project page and check that it shows as submitted with both files attached. Download each file and open it.

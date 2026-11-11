@@ -80,6 +80,7 @@ Everything read on 2026-11-06. Devpost blocks the fetch tool, so its pages were 
 - **Ship gate,** applied to a Markdown-only package: no key patterns in any commit or in the ZIP, only noreply identities, only Markdown in the ZIP, and no kit file or brief content committed. The web-app, billing and SMS items do not apply. One note: `docs/MACHINE-SETUP.md`, from PR #3, names the brief's file and its generic Downloads location, and the old OneDrive project folder name. It holds no username or email. Changing it is your call, and removing it from history would mean rewriting public history.
 - **No package edits.** The package is byte-identical to `main`, and all three checks still pass.
 - **Disclosure confirmed.** On 2026-11-10 you confirmed that the AI tools wording in `references/disclosures.md` is accurate as written, so the package and the ZIP stay as they are. If anything else uses AI before you submit, such as Claude building the PDF, the disclosure needs that use and the ZIP a rebuild.
+- **Track decided.** On 2026-11-10 you chose Open Innovation, as DESIGN decision 7 recommended. No answer names the track, so the proposal is unchanged.
 
 ## To carry into later phases
 
