@@ -14,7 +14,7 @@ Read on 2026-11-10 in the built-in browser: the Devpost Overview, [Official Rule
 | Track | Decided by you on 2026-11-10: Open Innovation (DESIGN decision 7). All prizes are open to every track (Resources FAQ) |
 | Your rewrite of the ten answers | The FAQ advises writing the PDF answers and the text description yourself. `PROPOSAL.md` has the facts to start from |
 | Questions to UGREEN | Drafted in `dossier/NOTES.md`, not sent. On Nov 10 another participant asked the 0.7.6 question in the Technical FAQ comments, with no reply yet |
-| Commit the ZIP to the public repo | Built at `dossier/dist/incident-dossier.zip`, not committed |
+| Commit the ZIP to the public repo | Committed on 2026-11-10 at your request, as the record of your Round 1 package. After any package edit, rebuild it and commit the new one with that edit |
 
 ## 2. Before you open the form
 
@@ -86,7 +86,7 @@ Expand-Archive -LiteralPath dossier\dist\incident-dossier.zip -DestinationPath $
 node "$env:USERPROFILE\.claude\skills\uliya-skill-kit\scripts\check-skill.mjs" "$x\incident-dossier"
 ```
 
-On 2026-11-10 the ZIP was 34,015 bytes with 10 Markdown files and 91,175 bytes uncompressed, SHA-256 `cc1009e2b287e25254c53c7fe3466f0234060b84b20d4f4630c18ff4d23e740d`. Any package edit changes the hash. Each entry sits under `incident-dossier/` with forward slashes, and on the same Python build the same files always give the same ZIP. To read the hash of the file you are about to upload (PowerShell prints it in capitals):
+On 2026-11-10 the ZIP was 34,015 bytes with 10 Markdown files and 91,175 bytes uncompressed, SHA-256 `cc1009e2b287e25254c53c7fe3466f0234060b84b20d4f4630c18ff4d23e740d`. Any package edit changes the hash, so commit the rebuilt ZIP together with the package change. Each entry sits under `incident-dossier/` with forward slashes, and on the same Python build the same files always give the same ZIP. To read the hash of the file you are about to upload (PowerShell prints it in capitals):
 
 ```powershell
 (Get-FileHash dossier\dist\incident-dossier.zip -Algorithm SHA256).Hash
