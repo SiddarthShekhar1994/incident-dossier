@@ -66,9 +66,25 @@ Everything read on 2026-11-06. Devpost blocks the fetch tool, so its pages were 
 - **Kit's "Skill is complete" upload line is still withheld.** Round 1 takes a ZIP through Devpost, the disclosure wording is unconfirmed, and uploading to SkillHub is your call.
 - **Install route.** `setup-and-testing.md` says to follow UGREEN's Finalist instructions. No source I found says how an unlisted Skill is installed. SkillHub's publish page points to official Uliya release notes, which I could not locate, and its token route is for listed Skills.
 
+## Phase 4
+
+- **Proposal.** `docs/PROPOSAL.md` holds the ten answers: 496 of 500 words, or 527 if a counter splits hyphenated words. Questions use the Official Rules' wording, which prevails over the Overview's. DESIGN section 3 wins over the brief: the data-flow wording follows M-00, expiry is written only as returned, answer 5 says "the tools I checked", and the folder is a "claim evidence folder". Answer 7 points to answer 4 for inputs and approvals and to answer 6 for actions, so each is named once.
+- **Answer 10** lists only the three questions still open: `event-evidence` paths, cameras in the test environment, and EXIF versus pixels. UGREEN's Technical FAQ answers the other two, so they left the list. Approval is per tool call, with Always allow scoped to the target's parent folder (Q15). `save-text` to an existing full path fails, with no rename and no overwrite (Q12).
+- **Kit 0.7.6 is still not out.** On Nov 10 the Starter Kit still links 0.7.3, and another participant's comment on the Technical FAQ that day says SkillHub shows only 0.7.3, with no reply yet. The design stays on 0.7.3, and answers 8 and 10 say so. Technical FAQ Q13 also says `collect-evidence` became `process-materials` in a newer kit. Dossier uses neither.
+- **Word count.** `dossier/tools/count-proposal.mjs` counts only the ten answers, as a word processor does, and prints a strict count that splits hyphens. It fails above 500, on a missing or misordered answer, on another heading inside or between the answers, whose text it would not count, and when answer 1 is not one sentence. It is not part of the ZIP.
+- **ZIP.** `dossier/tools/build-zip.py` builds it with Python `zipfile`: entries under `incident-dossier/`, forward slashes, sorted, one fixed timestamp, so on the same Python build the same files give the same bytes. It refuses hidden or non-Markdown files, files over 1 MB (read as 1,000,000 bytes, the stricter reading), BOMs and CR line endings. It reads every entry back before replacing an earlier ZIP, and leaves nothing behind when a check fails. Result: 34,015 bytes, 10 `.md` files, 91,175 bytes uncompressed, SHA-256 `cc1009e2b287e25254c53c7fe3466f0234060b84b20d4f4630c18ff4d23e740d`. A rebuild gave the same hash. `Expand-Archive` into a new empty folder gave a byte-identical copy, and the checker (`static-pass`, 0 errors, 0 warnings), the lint and the dry run check all pass on it. The ZIP is at `dossier/dist/`, committed on 2026-11-10 at your request as the record of the Round 1 package. Commit a rebuilt one together with any package change.
+- **Licence wording.** The Rules say use of the developer tools "is subject to the license agreement related thereto" (section 4), and the Starter Kit asks users of the tool to agree to its linked User Agreement, Privacy Policy and Skill Content Safety and Publishing Guidelines. The PDF's third-party block says that. No kit file states its version, so the block takes 0.7.3 from the Starter Kit's download name. The package's own sentence, "used under the hackathon's terms", agrees, so the package is unchanged.
+- **Form not seen.** The built-in browser is signed out of Devpost, and signing in is yours to do, so `docs/SUBMIT-CHECKLIST.md` marks every form field not seen. Signed out, the Devpost projects page only asks you to register. The Rules name only the PDF and the ZIP.
+- **Other pages read.** UGREEN's hackathon page now lists only the proposal and the initial Skill package for Round 1, and says no demo or video is needed. A participant's unanswered Devpost post says it once listed a walkthrough video. SkillHub gives the three first-party Skills that answer 5 compares against the exact names used there: Event query, Identity recognition and Event evidence, each described in one line as a single task.
+- **Review.** One independent reviewer, on the same model, checked both documents against the package, DESIGN, NOTES and the Rules. It found nothing high. All seven medium findings were fixed: the model wording, since Dossier does not pick a model; where names and plates are withheld; "depends on Surveillance Center", though the Skill still runs without it; the read-back missing from answer 4; kit 0.7.6 missing from answer 8; a false checklist line about licence information; and a missing row for the AI disclosure. Most low findings were fixed too, including scan commands that now catch any email address and either slash, and two edge cases in the tools. Not taken, to save words: naming `find` for archived recordings in answer 6. The fixes had the count, the three checks and a rebuild, and no second review.
+- **Ship gate,** applied to a Markdown-only package: no key patterns in any commit or in the ZIP, only noreply identities, only Markdown in the ZIP, and no kit file or brief content committed. The web-app, billing and SMS items do not apply. One note: `docs/MACHINE-SETUP.md`, from PR #3, names the brief's file and its generic Downloads location, and the old OneDrive project folder name. It holds no username or email. Changing it is your call, and removing it from history would mean rewriting public history.
+- **No package edits.** The package is byte-identical to `main`, and all three checks still pass.
+- **Disclosure confirmed.** On 2026-11-10 you confirmed that the AI tools wording in `references/disclosures.md` is accurate as written, so the package and the ZIP stay as they are. If anything else uses AI before you submit, such as Claude building the PDF, the disclosure needs that use and the ZIP a rebuild.
+- **Track decided.** On 2026-11-10 you chose Open Innovation, as DESIGN decision 7 recommended. No answer names the track, so the proposal is unchanged.
+
 ## To carry into later phases
 
-**Phase 4**
+**Phase 4** (all handled, see Phase 4 above)
 
 - The brief ends at `PROPOSAL.md`. The Rules require a PDF, and the Overview caps it at 1 MB. After your rewrite: build the PDF, then recount the ten answers from the final text.
 - Q6 names which capabilities at which step. Q7 also asks for the workflow and supported NAS CLI capabilities, plus orchestration, inputs, permissions, model choices and data handling. So actions belong in both. To save words, name each action once and point to it from the other answer.
@@ -84,7 +100,7 @@ Everything read on 2026-11-06. Devpost blocks the fetch tool, so its pages were 
 
 ## Questions worth sending UGREEN
 
-Not sent. Sending is your call. Routes: nas-support@ugreen.com, a support ticket, or the comments on the Technical FAQ, which invites questions.
+Not sent. Sending is your call. Routes: nas-support@ugreen.com, a support ticket, or the comments on the Technical FAQ, which invites questions. On Nov 10 another participant asked question 2 there, with no reply yet.
 
 1. Will the assigned NAS have Surveillance Center, cameras or sample events, for Finalists and for judges? If not, may a Finalist use a simulated ONVIF or RTSP source on the NAS?
 2. Where do I get uliya-skill-kit 0.7.6? It does not show in SkillHub search, and the Starter Kit still links 0.7.3.
@@ -94,11 +110,13 @@ Not sent. Sending is your call. Routes: nas-support@ugreen.com, a support ticket
 6. Does SkillHub 7.1 cover a file a Skill writes to the owner's own NAS, with names or plates the owner asked to include? Does 9.3 apply to a Skill that only requests identity results for events, and is any authorization needed?
 7. How do test files reach the assigned NAS, does data stay for judges, and how is an unlisted Skill installed?
 8. How does a delegation resume after `waiting_approval`, do run values survive a parent stop, and are linked references read at runtime?
+9. Does `ug-photo vision-vlm` see only the image pixels, or also the file's EXIF data, such as its capture time? Proposal answer 10 lists this as open.
 
 ## Machine
 
-- Kit installed at `~\.claude\skills\uliya-skill-kit`.
-- `py` reports Python 3.14.0, not 3.13 as the brief says. Node is v26.8.2.
-- PowerShell 5.1 traps from Packet still apply: `Set-Content -Encoding utf8` adds a BOM, and `Compress-Archive` writes backslashes. Write package files with the file tools and build the ZIP with Python `zipfile`.
-- The project is in OneDrive. List hidden files before checking or zipping.
+- Since 2026-11-10 the project lives at `C:\Projects\incident-dossier` on a desktop, outside OneDrive. Work only there, as `docs/MACHINE-SETUP.md` says.
+- Kit installed at `~\.claude\skills\uliya-skill-kit`: 26 files, kit 0.7.3, catalog 2.0.0.
+- This desktop has Node v26.13.0, and `py` reports Python 3.14.10. The laptop had Node v26.8.2 and Python 3.14.0, and the brief says 3.13. Check `py --version` before relying on Python.
+- PowerShell 5.1 traps from Packet still apply: `Set-Content -Encoding utf8` adds a BOM, and `Compress-Archive` writes backslashes. Write package files with the file tools, and build the ZIP with `dossier/tools/build-zip.py`.
+- Hidden files: the ZIP build refuses them, and the lint lists every file it finds.
 - To move to another machine, follow [docs/MACHINE-SETUP.md](docs/MACHINE-SETUP.md).
