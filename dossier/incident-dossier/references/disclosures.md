@@ -14,9 +14,9 @@ All of the package: the workflow that joins camera events, identity results, evi
 
 ## AI tools used
 
-Claude Code, using the Claude Opus 5.5 model, was used to research the rules and the capability catalog, review the workflow, draft and revise SKILL.md and these references, run the kit checker, and write the test spec and the dry run. Some workflow changes came from those reviews. It also drafts proposal answers for the entrant to rewrite.
+Claude Code, using the Claude Opus 5.5 model, was used to research the rules and the capability catalog, review the workflow, draft and revise SKILL.md and these references, run the kit checker, and write the test spec and the dry run. Some workflow changes came from those reviews. It also wrote the proposal answers and the Devpost tagline and project description, and built the proposal PDF from the answers.
 
-The entrant wrote the idea and the original workflow in the project brief, and decided which changes to accept.
+The entrant wrote the idea and the original workflow in the project brief, decided which changes to accept, and approved the proposal answers and the Devpost text.
 
 ## External services and data flows
 
