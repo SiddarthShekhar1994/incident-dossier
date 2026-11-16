@@ -1,8 +1,8 @@
-# Dossier: Round 1 proposal draft
+# Dossier: Round 1 proposal
 
-Draft of the ten answers for the Round 1 PDF. The facts are checked against the package. Rewrite the wording in your own words, then build the PDF from your text, as in [SUBMIT-CHECKLIST.md](SUBMIT-CHECKLIST.md).
+The ten answers for the Round 1 PDF, with facts checked against the package. On 2026-11-15 the entrant chose to have Claude write the final answers instead of rewriting this draft, so this text is final and `references/disclosures.md` says Claude wrote it. Build the PDF as in [SUBMIT-CHECKLIST.md](SUBMIT-CHECKLIST.md) section 4.
 
-Questions use the Official Rules' wording, which prevails over the Overview's phrasing of the same ten items. Only the answers count toward the 500 words. On 2026-11-10 this draft counts 496, or 527 if a counter splits hyphenated words such as `event-timeline`. Recount after any edit:
+Questions use the Official Rules' wording, which prevails over the Overview's phrasing of the same ten items. Only the answers count toward the 500 words. It counts 496, or 527 if a counter splits hyphenated words such as `event-timeline`. Recount after any edit:
 
 ```text
 node dossier/tools/count-proposal.mjs dossier/docs/PROPOSAL.md

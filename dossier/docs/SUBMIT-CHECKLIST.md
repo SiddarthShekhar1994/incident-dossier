@@ -10,11 +10,11 @@ Read on 2026-11-10 in the built-in browser: the Devpost Overview, [Official Rule
 
 | Item | Where it stands |
 |---|---|
-| AI tools wording in `references/disclosures.md` | Confirmed by you on 2026-11-10 as accurate as written: Claude Code with Claude Opus 5.5 is the only AI tool, and you wrote the idea and the original workflow and decided which changes to accept. If anything else uses AI before you submit, such as Claude building the PDF, add that use and rebuild the ZIP (section 5) |
+| AI tools wording in `references/disclosures.md` | Confirmed by you on 2026-11-10: Claude Code with Claude Opus 5.5 is the only AI tool, and you wrote the idea and the original workflow and decided which changes to accept. On 2026-11-15 you chose to have Claude write the final answers and the Devpost tagline and project description, and build the PDF, so the paragraph now says so, and that you approved the answers and the Devpost text. The ZIP was rebuilt (section 5). You approved that wording, the PDF and the Devpost text on 2026-11-15 |
 | Track | Decided by you on 2026-11-10: Open Innovation (DESIGN decision 7). All prizes are open to every track (Resources FAQ) |
-| Your rewrite of the ten answers | The FAQ advises writing the PDF answers and the text description yourself. `PROPOSAL.md` has the facts to start from |
+| The ten answers | On 2026-11-15 you chose to have Claude write the final answers, so the fact-checked draft in `PROPOSAL.md` is final. The FAQ advises writing the PDF answers and the text description yourself, so the disclosure says plainly that Claude wrote them |
 | Questions to UGREEN | Drafted in `dossier/NOTES.md`, not sent. On Nov 10 another participant asked the 0.7.6 question in the Technical FAQ comments, with no reply yet |
-| Commit the ZIP to the public repo | Committed on 2026-11-10 at your request, as the record of your Round 1 package. After any package edit, rebuild it and commit the new one with that edit |
+| Commit the ZIP to the public repo | Committed on 2026-11-10 at your request, as the record of your Round 1 package, and again on 2026-11-15 with the final disclosure, the PDF and the Devpost text. After any package edit, rebuild it and commit the new one with that edit |
 
 ## 2. Before you open the form
 
@@ -23,8 +23,8 @@ Read on 2026-11-10 in the built-in browser: the Devpost Overview, [Official Rule
 | You joined the hackathon ("Join Hackathon") with the Devpost account you will submit from. Registration closes with Round 1 | Not seen |
 | You meet the eligibility rules in Rules section 3: age of majority where you live, a listed country of residence, and entering either alone or in one team of up to three, not both | Yours to confirm |
 | One Project per entrant: Dossier only. Packet stays parked and is not submitted (Rules, Multiple Submissions) | Decided 2026-11-06 |
-| The PDF is built from your final text (section 4) | Waiting on your rewrite |
-| The ZIP was rebuilt after the last package edit and checked (section 5) | Built and checked 2026-11-10 |
+| The PDF is built from the final text (section 4) | Built 2026-11-15: `dossier/dist/Dossier-proposal.pdf`, 2 pages, 75,025 bytes |
+| The ZIP was rebuilt after the last package edit and checked (section 5) | Rebuilt and checked 2026-11-15, after the disclosure edit |
 
 ## 3. Form fields
 
@@ -33,8 +33,8 @@ Read on 2026-11-10 in the built-in browser: the Devpost Overview, [Official Rule
 | Project Proposal, PDF upload | Not seen. Required by the Rules and Overview | The PDF from section 4 | At most 1 MB. Ten answers in order, at most 500 words. The third-party block is in it |
 | Pre-test Skill Package, ZIP upload | Not seen. Required by the Rules and Overview | `dossier/dist/incident-dossier.zip` | Rebuilt after the last package edit. Its SHA-256 matches the build output. At most 10 MB. Only `.md` files |
 | Project name | Not seen | Dossier. The FAQ advises naming the project without AI | Matches the name in the PDF title |
-| Elevator pitch or tagline | Not seen. Devpost usually caps it at 200 characters | One line in your words. Your answer 1 can serve | Same claims as the PDF, and none of the wording in section 7 |
-| About the project, the text description | Not seen. The FAQ's advice about "your text description" suggests this field | Your own words | Same claims as the PDF. Nothing the PDF does not say |
+| Elevator pitch or tagline | Not seen. Devpost usually caps it at 200 characters | The 166-character pitch in `DEVPOST-TEXT.md`, written by Claude and disclosed | Same claims as the PDF, and none of the wording in section 7 |
+| About the project, the text description | Not seen. The FAQ's advice about "your text description" suggests this field | The Markdown block in `DEVPOST-TEXT.md`, written by Claude and disclosed | Same claims as the PDF. Nothing the PDF does not say |
 | Built with | Not seen | For example Markdown, UGOS, Uliya, uliya-skill-kit and Claude Code | Matches the disclosure |
 | AI tools used, if the form asks | Not seen. The FAQ asks for every AI tool and its use in your disclosures | The "AI tools used" text of `references/disclosures.md` | Same wording as the ZIP |
 | Try it out links | Not seen. The Rules say Round 1 needs no repository link | Leave empty unless you want judges to see the public repo | The repo also holds the parked Packet entry, which could read as a second Project |
@@ -61,7 +61,13 @@ Build it only after your rewrite.
 3. Check your text against section 7, and that answers 7 and 10 still hold the data flows and the open questions.
 4. Lay out the PDF in this order: the title "Dossier (incident-dossier)", your name, the ten questions with your answers, then the third-party block from the end of `PROPOSAL.md`. If you like, add the "AI tools used" paragraph from `references/disclosures.md` there too. Leave out the draft notes at the top of `PROPOSAL.md` and the instruction line under "Outside the word count".
 5. Outside the 500 words: team consent declarations, member names, electronic signatures and third-party licence information (Rules). The Rules require the third-party licence information, with each component's source, and leave it out of the count. They do not ask for the other three by name, so put your name on the PDF and add a declaration or signature only if the form asks. Data flows are not on the excluded list, and the Rules require them in the Proposal, so they stay in answer 7.
-6. Export to PDF from your editor. If you ask Claude to build it instead, that is one more AI use for the disclosure, so update `references/disclosures.md` and rebuild the ZIP first.
+6. Build the PDF. On 2026-11-15 you chose to have Claude build it, so the disclosure says so and the ZIP was rebuilt. From the repo root, with your name as it should appear on the PDF:
+
+   ```powershell
+   node dossier\tools\build-pdf.mjs dossier\docs\PROPOSAL.md dossier\dist\Dossier-proposal.pdf "Your Name"
+   ```
+
+   It uses Microsoft Edge, follows the layout in step 4, and checks the size, the selectable text and the document properties. Expect `no pdf problems`.
 7. Open the PDF and check: at most 1 MB, text can be selected, English only, all ten answers in order, no personal data beyond your name, and no email address in its document properties.
 8. If you changed any wording after the recount, paste it back into `PROPOSAL.md` and run the count again, so the count is of the text you submit.
 
@@ -86,7 +92,7 @@ Expand-Archive -LiteralPath dossier\dist\incident-dossier.zip -DestinationPath $
 node "$env:USERPROFILE\.claude\skills\uliya-skill-kit\scripts\check-skill.mjs" "$x\incident-dossier"
 ```
 
-On 2026-11-10 the ZIP was 34,015 bytes with 10 Markdown files and 91,175 bytes uncompressed, SHA-256 `cc1009e2b287e25254c53c7fe3466f0234060b84b20d4f4630c18ff4d23e740d`. Any package edit changes the hash, so commit the rebuilt ZIP together with the package change. Each entry sits under `incident-dossier/` with forward slashes, and on the same Python build the same files always give the same ZIP. To read the hash of the file you are about to upload (PowerShell prints it in capitals):
+On 2026-11-15, after the final disclosure edit, the ZIP was 34,051 bytes with 10 Markdown files and 91,296 bytes uncompressed, SHA-256 `f5442d0710b8bf5712bd8d487f51dd64ea4a7f6a7460b6c7250316bc211ae0cd`. The 2026-11-10 build, before the disclosure edits, was `cc1009e2…`. Any package edit changes the hash, so commit the rebuilt ZIP together with the package change. Each entry sits under `incident-dossier/` with forward slashes, and on the same Python build the same files always give the same ZIP. To read the hash of the file you are about to upload (PowerShell prints it in capitals):
 
 ```powershell
 (Get-FileHash dossier\dist\incident-dossier.zip -Algorithm SHA256).Hash
